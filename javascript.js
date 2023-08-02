@@ -1,6 +1,8 @@
 const random = ["rock", "paper", "scissors"];
 let computerSelection = getComputerChoice();
 let playerSelection = "hold";
+let computerScore = 0;
+let playerScore = 0;
 
 const buttons = document.querySelectorAll('button');
 
@@ -8,6 +10,7 @@ buttons.forEach((button) => {
   button.addEventListener('click', () => {
     playerSelection = button.id;
     playRound(computerSelection);
+    results();
   });
 });
 
@@ -18,26 +21,46 @@ function getComputerChoice() {
 function playRound(computerSelection) {
     computerSelection = getComputerChoice();
     if (playerSelection === computerSelection) {
-        console.log("Tie");
-        div1.textContent = "Tie";
-        document.body.appendChild(div1);
+        div3.textContent = "TIE!"
     }
     else if (playerSelection === "rock" && computerSelection === "scissors" ||
         playerSelection === "scissors" && computerSelection === "paper" ||
         playerSelection === "paper" && computerSelection === "rock") {
-        console.log("You win!");
-        div1.textContent = "You win!";
-        document.body.appendChild(div1);
+        playerScore++;
+        div2.textContent = `Player Score: ${playerScore}`;
+        div3.textContent = "YOU WIN!";
         } 
     else if (playerSelection === "rock" && computerSelection === "paper" ||
         playerSelection === "scissors" && computerSelection === "rock" ||
         playerSelection === "paper" && computerSelection === "scissors") {
-        console.log("You Lose!");
-        div1.textContent = "You lose!";
-        document.body.appendChild(div1);
+        computerScore++;
+        div1.textContent = `Computer Score: ${computerScore}`;
+        div3.textContent = "YOU LOSE";
         } 
   }
 
+  function results() {
+    if (playerScore > 4) {
+      console.log("YOU WIN THIS GAME!!!")
+      div4.textContent = "YOU WIN THIS GAME!";
+      div4.style.color = "yellow";
+      document.body.appendChild(div4);
+    }
+    else if (computerScore > 4) {
+      console.log("YOU LOSE THE GAME :(")
+      div4.textContent = "YOU LOSE THE GAME!";
+      div4.style.color = "yellow";
+      document.body.appendChild(div4);
+    } else {
+      div4.textContent = "THE WINNER OF THE GAME IS:";
+      div4.style.color = "yellow";
+      document.body.appendChild(div4);
+    }
+  }
 
-const div1 = document.createElement("div");
-div1.style.color = "blue";
+
+const div1 = document.querySelector("#computerScore");
+const div2 = document.querySelector("#playerScore");
+const div3 = document.querySelector("#roundWinner");
+const div4 = document.querySelector("#gameWinner")
+
