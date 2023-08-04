@@ -43,17 +43,14 @@ function playRound(computerSelection) {
     if (playerScore > 4) {
       console.log("YOU WIN THIS GAME!!!")
       div4.textContent = "YOU WIN THIS GAME!";
-      div4.style.color = "yellow";
       document.body.appendChild(div4);
     }
     else if (computerScore > 4) {
       console.log("YOU LOSE THE GAME :(")
       div4.textContent = "YOU LOSE THE GAME!";
-      div4.style.color = "yellow";
       document.body.appendChild(div4);
     } else {
-      div4.textContent = "THE WINNER OF THE GAME IS:";
-      div4.style.color = "yellow";
+      div4.textContent = "";
       document.body.appendChild(div4);
     }
   }
