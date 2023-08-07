@@ -40,18 +40,19 @@ function playRound(computerSelection) {
   }
 
   function results() {
+    const container = document.querySelector("#gameWinner")
     if (playerScore > 4) {
       console.log("YOU WIN THIS GAME!!!")
       div4.textContent = "YOU WIN THIS GAME!";
-      document.body.appendChild(div4);
+      container.appendChild(div4);
     }
     else if (computerScore > 4) {
       console.log("YOU LOSE THE GAME :(")
       div4.textContent = "YOU LOSE THE GAME!";
-      document.body.appendChild(div4);
+      container.appendChild(div4);
     } else {
       div4.textContent = "";
-      document.body.appendChild(div4);
+     container.appendChild(div4);
     }
   }
 
